@@ -1,0 +1,65 @@
+server:
+  port: 9092
+
+info:
+  app:
+    name: HorseTrack
+    description: Horse Track ATM
+
+app:
+  inventory:
+    file: "inventory.txt"
+  horses:
+    file: "horses.txt"
+
+spring:
+  application:
+    name: horseTrack
+  main:
+    banner-mode: "off"
+  datasource:
+    url: jdbc:h2:mem:horseTrackDb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+
+  h2:
+    console:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      access: unrestricted
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+  metrics:
+    enable:
+      all: true
+
+logging.level.org.hibernate.SQL: DEBUG
+logging:
+  level:
+    org:
+      hibernate:
+        orm:
+          jdbc:
+            bind: TRACE
+      springframework: INFO
+# logging.level.org.hibernate.type.descriptor.sql: TRACE
+# logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+---
+spring.config.activate.on-profile: docker
+

@@ -1,0 +1,9 @@
+# Data on Horses including winner of the last race
+# id, name, odds, ifWonLastRace
+1,That Darn Gray Cat,5,won
+2,Fort Utopia,10,lost
+3,Count Sheep,9,lost
+4,Ms Traitour,4,lost
+5,Real Princess,3,lost
+6,Pa Kettle,5,lost
+7,Gin Stinger,6,lost
