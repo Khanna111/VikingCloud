@@ -73,14 +73,15 @@ public class CommandLineConsole implements CommandLineRunner {
      */
     private void processCommand(String originalInput) {
         log.info("Processing input: {}", originalInput);
-        String input = originalInput.trim().toUpperCase();
+        String input = originalInput.trim();
         if (input.length() == 0) {
             return; // ignore blank lines
         }
         String[] parts = input.split(" ");
         String command = parts[0];
         switch (command) {
-            case "R":
+            case "R": case "r":
+
                 if (parts.length == 1) {
                     commandProcessor.restockInventory();
                     displayDecorator.displayInventoryAndHorses(commandProcessor.getInventoryItems(), commandProcessor.getHorses());
@@ -88,10 +89,10 @@ public class CommandLineConsole implements CommandLineRunner {
                     commandProcessor.invalidCommand(originalInput);
                 }
                 break;
-            case "Q":
+            case "Q": case "q":
                 commandProcessor.quit();
                 break;
-            case "W":
+            case "W": case "w":
                 // if (parts.length == 2 && Pattern.matches("[-+]?\\d+", parts[1])) {
                 if (parts.length == 2) {
                     int horseId = getHorseId(parts[1]);
